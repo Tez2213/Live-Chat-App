@@ -1,84 +1,133 @@
-# Turborepo starter
+# Real-time Chat Application
 
-This Turborepo starter is maintained by the Turborepo core team.
+A modern, feature-rich chat application built with a microservices architecture using Next.js, Socket.IO, and MongoDB.
 
-## Using this example
+## Project Overview
 
-Run the following command:
+This is a monorepo-based chat application that consists of multiple applications:
 
-```sh
-npx create-turbo@latest
-```
+- **Web App**: Front-end client application built with Next.js
+- **Server**: Back-end WebSocket server using Socket.IO for real-time communication
+- **Docs**: Documentation site for the project
 
-## What's inside?
+## Features
 
-This Turborepo includes the following packages/apps:
+- Real-time messaging using WebSockets
+- User authentication and customizable usernames  
+- Dark/Light theme toggle with persistent preferences
+- Room-based chat functionality
+- Message history storage in MongoDB
+- Responsive UI for desktop and mobile devices
 
-### Apps and Packages
+## Tech Stack
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### Front-end
+- [Next.js 15](https://nextjs.org/)
+- [React 19](https://react.dev/)
+- [Socket.IO Client](https://socket.io/docs/v4/client-api/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Back-end
+- [Node.js](https://nodejs.org/)
+- [Socket.IO](https://socket.io/)
+- [MongoDB](https://www.mongodb.com/)
+- [Express](https://expressjs.com/)
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
+### Development Tools
+- [TypeScript](https://www.typescriptlang.org/)
+- [Turbo](https://turbo.build/) for monorepo management
 - [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- [Prettier](https://prettier.io/) for code formatting
 
-### Build
-
-To build all apps and packages, run the following command:
+## Project Structure
 
 ```
-cd my-turborepo
-pnpm build
+├── apps/
+│   ├── docs/          # Documentation site
+│   ├── server/        # Backend Socket.IO server
+│   └── web/           # Next.js frontend application
+├── packages/
+│   ├── eslint-config/ # Shared ESLint configurations
+│   ├── typescript-config/ # Shared TypeScript configurations
+│   └── ui/            # Shared UI components
+└── turbo.json         # Turbo configuration
 ```
 
-### Develop
+## Getting Started
 
-To develop all apps and packages, run the following command:
+### Prerequisites
 
+- Node.js 18 or later
+- MongoDB (local installation or MongoDB Atlas)
+- npm 11.1.0 or later
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd Chat\ App
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure environment variables:
+   - Copy `.env.example` to `.env` in the server directory
+   - Update with your MongoDB connection string and other configurations
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+This will start:
+- Web client at http://localhost:3000
+- Server at http://localhost:8000
+- Documentation site at http://localhost:3001
+
+## Usage
+
+1. Open http://localhost:3000 in your browser
+2. Enter a username to join the chat
+3. Start sending and receiving real-time messages
+4. Toggle between dark and light themes as needed
+
+## Development
+
+### Commands
+
+- `npm run dev` - Start all applications in development mode
+- `npm run build` - Build all applications
+- `npm run lint` - Run linting for all applications
+- `npm run check-types` - Check TypeScript types for all applications
+- `npm run format` - Format code with Prettier
+
+### Adding UI Components
+
+The UI package includes a generator for creating new components:
+
+```bash
+cd packages/ui
+npm run generate:component
 ```
-cd my-turborepo
-pnpm dev
-```
 
-### Remote Caching
+## Deployment
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+The application is designed to be deployed to Vercel or any other platform that supports Next.js applications.
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
+### Server Deployment
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+For the Socket.IO server:
+1. Build the server: `npm run build --filter=server`
+2. Deploy the `apps/server/dist` directory to your hosting provider
+3. Set up environment variables as per `.env.example`
 
-```
-cd my-turborepo
-npx turbo login
-```
+### Web App Deployment
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+For the Next.js web application:
+1. Build the app: `npm run build --filter=web`
+2. Deploy using Vercel or another Next.js-compatible hosting service
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
