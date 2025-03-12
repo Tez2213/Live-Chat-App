@@ -1,6 +1,31 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --success: #10b981;
+  --danger: #ef4444;
+  --text: #1f2937;
+  --text-secondary: #6b7280;
+  --bg-main: #f9fafb;
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --border: #e5e7eb;
+  --border-focus: #c7d2fe;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+
+  /* Dark mode variables */
+  --dark-primary: #818cf8;
+  --dark-primary-dark: #6366f1;
+  --dark-text: #e5e7eb;
+  --dark-text-secondary: #9ca3af;
+  --dark-bg-main: #111827;
+  --dark-bg-card: #1f2937;
+  --dark-bg-input: #374151;
+  --dark-border: #374151;
+  --dark-border-focus: #6366f1;
+  --dark-shadow: rgba(0, 0, 0, 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,4 +72,10 @@ a {
   .imgDark {
     display: unset;
   }
+}
+
+/* Add this to your global CSS file or create a global.css */
+.dark-theme {
+  background-color: var(--dark-bg-main);
+  color: var(--dark-text);
 }
