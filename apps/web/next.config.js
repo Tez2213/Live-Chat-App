@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  // Add this to allow connections from any host
+  // Remove swcMinify line as it's not needed in Next.js 15
   async headers() {
     return [
       {
@@ -25,4 +24,5 @@ const nextConfig = {
   },
 };
 
+// Change this line from module.exports to export default
 export default nextConfig;
